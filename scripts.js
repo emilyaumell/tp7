@@ -26,15 +26,31 @@ function loadFileInto(fromFile, whereTo) {
 
 }
 
-window.onload = function() {
-	
-	loadFileInto("ingredients.html", "ingredients");
-	
-	loadFileInto("equipment.html", "equipment");
-	
-	loadFileInto("directions.html", "directions");
-	
+// object contructor for Recipe prototype
+function Recipe(recipeName, imageURL, contributorName, ingredientsFilename, equipmentFilename, directionsFilename) {
+  this.name = recipeName;
+  this.imgsrc = imageURL
+  this.contributor = contributorName;
+  this.ingFile = ingredientsFilename;
+  this.equipFile = equipmentFilename;
+  this.dirFile = directionsFilename;
   
+  // update the screen with this object's recipe information
+  this.deisplayRecipe = function() {
+    document.querySelector("#titleBanner h1").innerHTML = this.name;
+    
+  }
+}
+
+SirloinSteakwithGarlicButter = new Recipe(
+  "Sirloin Steak with Garlic Butter", 
+  "https://images.unsplash.com/photo-1579366948929-444eb79881eb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1400&q=80",
+  "Emily Aumell",
+  "ingredients.html",
+  "equipment.html",
+  "directions.html"
+);
+
   // target the headline
   x = document.getElementById("headline");
   // add CSS style for headline size
