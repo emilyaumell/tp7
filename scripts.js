@@ -36,10 +36,26 @@ function Recipe(recipeName, imageURL, contributorName, ingredientsFilename, equi
   this.dirFile = directionsFilename;
   
   // update the screen with this object's recipe information
-  this.deisplayRecipe = function() {
+  this.displayRecipe = function() {
+    
+    // update the recipe title
     document.querySelector("#titleBanner h1").innerHTML = this.name;
     
+    // update the recipe contributor
+    document.querySelector("#titleBanner h3").innerHTML = "Contributed by:" + this.contributor;
+    
+    // update teh image
+    document.querySelector("#titleBanner ").style.backgroundImage = "url(" + this.imgsrc + ")";
+    
+    // update the three columns of information 
+    loadFileInto(this.ingFile, "ingredients");
+    loadFileInto(this.ingFile, "equipment");
+    loadFileInto(this.ingFile, "directions");
+
+    
   }
+  
+  
 }
 
 SirloinSteakwithGarlicButter = new Recipe(
@@ -51,8 +67,10 @@ SirloinSteakwithGarlicButter = new Recipe(
   "directions.html"
 );
 
+window.onload = function() {
+
   // target the headline
-  x = document.getElementById("headline");
+  x = document.getElementById("titleBanner");
   // add CSS style for headline size
   x.classList.add("biggerHeadline");
 
@@ -110,7 +128,6 @@ z = document.getElementById("steakpic");
 
 // position p tag above photo
 document.body.insertBefore(e, z);
-  
-  
+
 };
 
