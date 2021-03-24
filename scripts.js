@@ -26,6 +26,12 @@ function loadFileInto(fromFile, whereTo) {
 
 }
 
+window.onload = function() {
+  loadFileInto("ingredients.html", "ingredients");
+  loadFileInto("equipment.html", "equipment");
+  loadFileInto("directions.html", "directions");
+};
+
 // object contructor for Recipe prototype
 function Recipe(recipeName, imageURL, contributorName, ingredientsFilename, equipmentFilename, directionsFilename) {
   this.name = recipeName;
@@ -45,7 +51,7 @@ function Recipe(recipeName, imageURL, contributorName, ingredientsFilename, equi
     document.querySelector("#titleBanner h3").innerHTML = "Contributed by:" + this.contributor;
     
     // update teh image
-    document.querySelector("#titleBanner ").style.backgroundImage = "url(" + this.imgsrc + ")";
+    document.querySelector("#titleBanner").style.backgroundImage = "url(" + this.imgsrc + ")";
     
     // update the three columns of information 
     loadFileInto(this.ingFile, "ingredients");
@@ -67,10 +73,30 @@ SirloinSteakwithGarlicButter = new Recipe(
   "directions.html"
 );
 
+CheesyBuffaloChickenDip = new Recipe(
+  "Cheesy Buffalo Chicken Dip",
+  "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F2143192.jpg&w=596&h=596&c=sc&poi=face&q=85",
+  "Edison Soliman",
+  "cheesyIng.html",
+  "cheesyEquip.html",
+  "cheesyDir.html"
+);
+
+WorldsBestLasagna = new Recipe(
+  "Worlds Best Lasagna",
+  "https://cdn.pixabay.com/photo/2017/02/15/15/17/meal-2069021_1280.jpg",
+  "Madison Roby",
+  "lasagIng.html",
+  "lasagEquip.html",
+  "lasagDir.html"
+);
+
+
 window.onload = function() {
 
   // target the headline
   x = document.getElementById("titleBanner");
+  
   // add CSS style for headline size
   x.classList.add("biggerHeadline");
 
